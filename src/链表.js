@@ -93,6 +93,7 @@ class LinkList {
     if (position === 0) {
       const head = this.head.element
       this.head = this.head.next
+      this.length--
       return head
     }
     let current = this.head
@@ -102,6 +103,7 @@ class LinkList {
     }
     let removeNode = current.next
     current.next = removeNode.next
+    this.length--
     return removeNode.element
   }
 
