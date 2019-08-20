@@ -39,7 +39,9 @@ class LinkList {
 
   //任意位置插入元素
   insert(position, element) {
+    if (position < 0) return false
     const node = new Node(element)
+    if (position > this.length) position = this.length
     if (position === 0) {
       node.next = this.head
       this.head = node
@@ -55,6 +57,7 @@ class LinkList {
       previous.next = node
     }
     this.length++
+    return true
   }
 
   //反转链表
@@ -88,8 +91,8 @@ class LinkList {
   }
 
   // 移除指定位置元素
-  removeElement(position) {
-    if (position < 0 || position >= this.length) return null
+  remove(position) {
+    if (!this.length || position < 0 || position >= this.length) return null
     if (position === 0) {
       const head = this.head.element
       this.head = this.head.next
@@ -126,7 +129,9 @@ ll1.append('c')
 ll1.append('d')
 ll1.append('e')
 
-ll1.removeElement(3)
-ll1.removeElement(0)
+ll1.remove(3)
+ll1.remove(0)
 
-console.log(ll1.getElement(1))
+ll1.insert(10000,'zzz')
+
+console.log(ll1.getElement(3))
